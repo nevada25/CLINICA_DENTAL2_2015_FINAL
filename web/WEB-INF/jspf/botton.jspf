@@ -1,0 +1,25 @@
+         
+<div class="container" >    
+          <div class="row" >
+            <div class="col-md-12" >
+                <footer style="background: none;">                
+                    &copy; Derechos reservador por Los autores: KEVIN Y LUIS LAVADO
+                    <div>
+                        <br>
+                    </div>
+                </footer>
+            </div>
+          </div>
+        </div>
+   
+	<!-- Latest compiled and minified JavaScript -->
+        <script src="../../js/jquery-2.1.4.min.js"></script>
+        <script src="../../bootstrap/js/bootstrap.js"></script>
+               <script src="../../js/jquery-2.1.4.min.js"></script>
+               <script type="text/javascript" src="../../js_ajaxper/funcionajax.js"></script>
+    <script type="text/javascript" src="../../js_ajaxper/jquery-1.2.1.pack.js"></script>
+    
+</body>
+</html>		
+	
+

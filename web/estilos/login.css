@@ -1,0 +1,41 @@
+h1{
+	color: red;
+	padding-top:20px;
+}
+modal fade{
+	text-align:center;
+	background-position:center;
+	padding:12px ;
+	margin:12px auto;
+}
+section.fondo{
+  background-image: url(img/img2.png);
+}
+#cuerpo{
+       background-image: url(img/img2.png);
+        text-align:center;
+	background-position:center;
+	padding:12px ;
+	margin:12px auto;}
+.cabecera{
+	background: #000000;
+	font-size: 200%;
+	color: green;
+	height: 130px;
+	padding-top: 5px;
+	padding-left: 45px;
+	text-align: center;
+	padding-right: 45px;
+
+}
+.pie{
+	background: #9A9A9A;
+	color: white;
+	text-align: center;
+	margin: 0 auto;
+	height: 30px;
+	padding-top: 5px;
+}
+
+
+

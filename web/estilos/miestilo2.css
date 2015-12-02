@@ -1,0 +1,37 @@
+/*h1{
+	color: red;
+}*/
+
+.cabecera{
+	background: #3b5998;
+	font-size: 200%;
+	color: white;
+	height: 100px;
+	padding-top: 15px;
+	padding-left: 45px;
+	text-align: right;
+	padding-right: 45px;
+
+}
+.botonmenu{
+margin-left: 35px; 
+margin-top: -75px;
+} 
+
+.pie{
+	background: #9A9A9A;
+	color: white;
+	text-align: center;
+	margin: 0 auto;
+	height: 30px;
+	padding-top: 5px;
+}
+
+.cuerpo{
+	margin: 0 auto;
+	font-size: 180%;
+	color: #dfe3ee;
+	text-align: center;
+	height: 400px;
+	margin-top: 250px;
+}
