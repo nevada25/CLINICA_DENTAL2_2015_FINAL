@@ -13,8 +13,8 @@ import java.util.List;
  * @author Luis Lavado
  */
 public interface Historia_clinicaDao {
-    public boolean  agregarHistoriaClinica(Historia_clinica historiaClinica);
-    public List<Historia_clinica> mostrarHistoriaClinica();
-    public boolean actualizarHistoriaClinica(Historia_clinica historiaClinica);
-    public boolean eliminarHistoriaClinica(int historiaClinica);
+    public int fn_crud_historia_clinica(Historia_clinica historia_clinica, int opcion);
+    public List<Historia_clinica> listarHistCli(String id_hist_cli);
+    public Historia_clinica buscardatos(int id_cliente);
+    public List<Historia_clinica> listarHistCla(int id_cliente);
 }

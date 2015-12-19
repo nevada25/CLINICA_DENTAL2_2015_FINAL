@@ -1,0 +1,11 @@
+insert into categoria_servicio(id_cat_serv, nombre_cat_serv) values(1, 'PERIODONCIA');
+insert into categoria_servicio(id_cat_serv, nombre_cat_serv) values(2, 'OPERATORIA DENTAL');
+insert into categoria_servicio(id_cat_serv, nombre_cat_serv) values(3, 'ODONTOPEDIATRIA');
+insert into categoria_servicio(id_cat_serv, nombre_cat_serv) values(4, 'CIRUGIA BUCAL');
+insert into categoria_servicio(id_cat_serv, nombre_cat_serv) values(5, 'ESTETICA');
+insert into categoria_servicio(id_cat_serv, nombre_cat_serv) values(6, 'PROTESIS FIJA');
+insert into categoria_servicio(id_cat_serv, nombre_cat_serv) values(7, 'PROTESIS REMOVIBLE');
+insert into categoria_servicio(id_cat_serv, nombre_cat_serv) values(8, 'ENDODONCIA');
+insert into categoria_servicio(id_cat_serv, nombre_cat_serv) values(9, 'ORTODONCIA');
+insert into categoria_servicio(id_cat_serv, nombre_cat_serv) values(10, 'OTROS');
+

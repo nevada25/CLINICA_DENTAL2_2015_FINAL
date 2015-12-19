@@ -1,9 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package dao;
+
 import bean.Hist_diagnost_def;
-import java.util.List;
+
+/**
+ *
+ * @author Luis Lavado
+ */
 public interface Hist_diagnost_defDao {
-    public boolean  agregarDiagnosticoDef(Hist_diagnost_def diag_preD);
-    public List<Hist_diagnost_def> mostrarDiagnosticoDef();
-    public boolean actualizarDiagnosticoDef(Hist_diagnost_def diag_preD);
-    public boolean eliminarDiagnosticoDef(int diagnosticoDef);
+    public boolean agregarHist_diag_daf(Hist_diagnost_def hist_diagnost_def );
 }

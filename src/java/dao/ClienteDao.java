@@ -14,7 +14,9 @@ import java.util.List;
  */
 public interface ClienteDao {
     public boolean agregarcliente(Cliente cliente);
-    List<Cliente> listarclientes();
+    public List<Cliente> listarclientes();
+    public List<Cliente> listarclientesfecha(String fecha_ini, String fecha_fin);
+    List<Cliente> buscarclientes(String buscar ,String limit);
     public boolean updatecliente(Cliente cliente);
     public boolean deletecliente(int id_cliente);
 }

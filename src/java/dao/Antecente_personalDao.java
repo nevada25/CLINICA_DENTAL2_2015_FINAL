@@ -6,7 +6,6 @@
 package dao;
 
 import bean.Antecente_personal;
-
 import java.util.List;
 
 /**
@@ -14,6 +13,6 @@ import java.util.List;
  * @author Luis Lavado
  */
 public interface Antecente_personalDao {
- public List<Antecente_personal> listarAntedente_personal1();
- public List<Antecente_personal> listarAntedente_personal2();
+    public List<Antecente_personal> listarAntedente_personal1();
+    public List<Antecente_personal> listarAntedente_personal2();
 }

@@ -13,8 +13,5 @@ import java.util.List;
  * @author Luis Lavado
  */
 public interface Diagnostico_defDao {
-    public boolean  agregardiagnosticoDef(Diagnostico_def diagnosticoDef);
-    public List<Diagnostico_def> mostrardiagnosticoDef();
-    public boolean actualizardiagnosticoDef(Diagnostico_def diagnosticoDef);
-    public boolean eliminardiagnosticoDef(int id_diagnosticoDef);
+    public List<Diagnostico_def> listarDiagnosticoPor();
 }

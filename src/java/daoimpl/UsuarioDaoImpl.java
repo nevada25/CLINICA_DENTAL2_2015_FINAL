@@ -23,9 +23,9 @@ public class UsuarioDaoImpl implements UsuarioDao{
     @Override
     public boolean agregarUsuario(Usuario usuario) {
         boolean estado=false;
-        String query="INSERT INTO usuario(id_usuario, nombre_usuario, password, estado, rol, email, ultima_session) "+
+        String query="INSERT INTO usuario(id_usuario, nombre_usuario, password, estado, rol, email, ultima_session,foto) "+
                      "VALUES ( "+usuario.getId_usuario()+" ,'"+usuario.getNombre_usuario()+"','"+usuario.getPassword()+"'"
-                + ",'1','usuario','"+usuario.getEmail()+"',now())";
+                + ",'1','usuario','"+usuario.getEmail()+"',now(),"+usuario.getFoto()+")";
         Statement st=null;
         try {
             st=cn.traerconeccion().createStatement();
@@ -127,7 +127,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
     @Override
     public Usuario validarUsuario(String nombre_usuario, String password) {
         Usuario u=null;
-        String query="SELECT id_usuario, nombre_usuario, password, estado, rol, email, ultima_session from usuario where nombre_usuario= '"+nombre_usuario+"' and password='"+password+"'";
+        String query="SELECT id_usuario, nombre_usuario, password, estado, rol, email, ultima_session,foto from usuario where nombre_usuario= '"+nombre_usuario+"' and password='"+password+"'";
         Statement st;
         ResultSet rs;
         try {
@@ -142,6 +142,7 @@ public class UsuarioDaoImpl implements UsuarioDao{
                u.setRol(rs.getString("rol"));
                u.setEmail(rs.getString("email"));
                u.setUltima_session(rs.getString("ultima_session"));
+               u.setFoto(rs.getString("foto"));
             }
              System.out.println(query);
              cn.cerrar();

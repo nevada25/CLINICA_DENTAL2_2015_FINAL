@@ -1,0 +1,246 @@
+Antecente_personalDaoImpl :
+°°°°°°°°°°°°°°°°°°°
+
+ int id_ante_personal;			
+ String nombre_antecedente;			
+
+
+Categoria_servicioDaoImpl : 
+°°°°°°°°°°°°°°°°°°°
+
+int id_cat_serv;			
+String nombre_cat_serv;	
+
+CitaDaoImpl :
+°°°°°°
+
+int id_cita;			
+int id_contrato;			
+String fecha_cita;			
+String hora;		
+String estado;			
+String condicion;			
+int id_empleado;			
+--------------------------------------------------------
+
+ClienteDaoImpl : 
+°°°°°°°°
+
+int id_cliente;
+
+CompraDaoImpl :
+°°°°°°°
+
+int id_compra;			
+String fecha;		
+String serie_fac;			
+double subtotal;		
+double descuento;			
+double igv;		
+double total;			
+int id_persona;	
+
+ConsultaDaoImpl :
+°°°°°°°°°
+int id_cliente;
+int id_empleado;			
+int id_consulta;		
+String especificaciones;			
+String observaciones;		
+String pronostico;
+
+
+ContratoDaoImpl : 
+°°°°°°°°°
+
+int id_contrato;		
+int id_consulta;		
+String fecha_consult;			
+String fecha_registro;
+
+Det_consulta_servDaoImpl :
+°°°°°°°°°°°°°°°°°°
+	
+int id_servicio;
+int id_cita;		
+double cantidad;			
+double total;		
+String nro_laboratorio_int;
+String motivo_consul;		
+int id_empleado;	
+		
+Diagnostico_defDaoImpl :
+°°°°°°°°°°°°°
+
+int id_diagnostico_def;
+String cie_10;	
+String descripcion;	
+
+-----------------------------------------	
+
+Diagnostico_preDaoImpl :
+°°°°°°°°°°°°°°°
+
+int id_diagnostico_pre;			
+String descripcion;		
+int id_historia_clinica;
+
+EmbarazoDaoImpl :
+°°°°°°°°
+
+int id_historia_clinica;			
+String nro_semanas;		
+String ultimo_control;			
+String trata_farma;
+
+EmpleadoDaoImpl :
+°°°°°°°°°
+
+int id_empleado;
+
+		
+Examen_clinicoDaoImpl :
+°°°°°°°°°°°°°°°
+
+int id_examen_clinico;			
+String aplicado_en;
+
+
+Grado_instruccionDaoImpl :
+°°°°°°°°°°°°°°°°°°
+
+int id_grado_instruccion;
+String nombre_grad_inst;		
+String estado;
+
+Habito_nocivoDaoImpl :
+°°°°°°°°°°°°°°
+
+int id_habito_nocivo;
+String nombre_hab_noc;
+
+Hist_ante_personalDaoImpl :
+°°°°°°°°°°°°°°°°°°°
+
+int id_historia_clinica;
+int id_ante_personal;		
+String estado;
+
+Hist_diagnost_defDaoImpl :
+°°°°°°°°°°°°°°°°°
+
+int id_historia_clinica;
+int id_diagnostico_def;
+
+Hist_examen_clinicoDaoImpl :
+°°°°°°°°°°°°°°°°°°°
+
+int id_historia_clinica;
+int id_examen_clinico;		
+String descripcion;		
+String estado;
+
+Hist_hab_nocDaoImpl :
+°°°°°°°°°°°°
+
+int id_historia_clinica;
+int id_habito_nocivo;		
+String estado;
+
+Historia_clinicaDaoImpl :
+°°°°°°°°°°°°°°°°
+
+int id_historia_clinica;
+int id_cliente;	
+String nro_historia;			
+String comentario;			
+String antecedentes_familiar;
+String fecha_reg;	
+String hora_reg;		
+String responsable_apoderado;
+String motivo_consulta;	
+double peso;	
+double talla;			
+String pa;		
+String estado;
+
+Laboratorios_externosDaoImpl :
+°°°°°°°°°°°°°°°°°°°°°
+
+int id_lab_externo;
+String nombre_lab_ext;			
+String descripcion;		
+String estado;		
+
+OcupacionDaoImpl :
+°°°°°°°°°°
+
+int id_ocupacion;
+String nombre_ocupacion;
+String estado;	
+
+
+PiezaDaoImpl :
+°°°°°
+
+int id_pieza;
+String nro_pieza;			
+
+ProductoDaoImpl :
+°°°°°°°°
+	
+int id_producto;
+int id_unidad_medida;
+
+ProveedorDaoImpl :
+°°°°°°°°°°
+
+int id_proveedor;
+String estado;
+
+ServicioDaoImpl :
+°°°°°°°°°
+
+int id_servicio;
+int id_cat_serv;		
+String nombre_serv;			
+double precio_max;			
+double precio_min;			
+String estado;		
+
+Servicio_piezaDaoImpl :
+°°°°°°°°°°°°°°
+
+int id_servicio;
+int id_pieza;
+
+Tipo_docDaoImpl :
+°°°°°°°°°
+int id_tipo_doc;
+String nombre_tipo_doc;			
+String estado;
+
+UbigeoDaoImpl :
+°°°°°°°
+
+int id_ubigeo;
+String departamento;
+String provincia;		
+String distrito;		
+String estado;		
+
+Unidad_medidaDaoImpl :
+°°°°°°°°°°°°°
+int id_unidad_medida;
+String nombre_uni_med;			
+String estado;
+
+
+
+			
+
+
+
+
+		
+

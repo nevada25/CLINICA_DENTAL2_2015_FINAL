@@ -9,7 +9,7 @@ package bean;
  *
  * @author Luis Lavado
  */
-public class Historia_clinica {
+public class Historia_clinica extends Persona{
 
     private String id_historia_clinica;
     private String id_cliente;
@@ -24,32 +24,35 @@ public class Historia_clinica {
     private String talla;
     private String pa;
     private String estado;
+    private String especificaciones;
+    private String observaciones;
+    private String pronostico;
 
     public Historia_clinica() {
     }
 
-    public Historia_clinica(String id_historia_clinica, String id_cliente, String nro_historia, String comentario, String antecedentes_familiar, String fecha_reg, String hora_reg, String responsable_apoderado, String motivo_consulta, String peso, String talla, String pa, String estado) {
-        this.id_historia_clinica = id_historia_clinica;
-        this.id_cliente = id_cliente;
-        this.nro_historia = nro_historia;
-        this.comentario = comentario;
-        this.antecedentes_familiar = antecedentes_familiar;
-        this.fecha_reg = fecha_reg;
-        this.hora_reg = hora_reg;
-        this.responsable_apoderado = responsable_apoderado;
-        this.motivo_consulta = motivo_consulta;
-        this.peso = peso;
-        this.talla = talla;
-        this.pa = pa;
-        this.estado = estado;
+    public String getEspecificaciones() {
+        return especificaciones;
     }
 
-    public String getEstado() {
-        return estado;
+    public void setEspecificaciones(String especificaciones) {
+        this.especificaciones = especificaciones;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public String getPronostico() {
+        return pronostico;
+    }
+
+    public void setPronostico(String pronostico) {
+        this.pronostico = pronostico;
     }
 
     public String getId_historia_clinica() {
@@ -146,6 +149,14 @@ public class Historia_clinica {
 
     public void setPa(String pa) {
         this.pa = pa;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
     
 }

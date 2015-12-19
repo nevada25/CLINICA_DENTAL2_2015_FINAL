@@ -5,25 +5,22 @@
  */
 package bean;
 
-import java.sql.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-@Entity
+/**
+ *
+ * @author Luis Lavado
+ */
 public class Persona {
-     @Id 
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id_persona;
-    private int id_grado_instruccion;
-    private int id_ocupacion;
-    private int id_ubigeo_nac;
-    private int id_ubigeo_act;
-    private String nombre;
+
+    private String id_persona;
+    private String id_grado_instruccion;
+    private String id_ocupacion;
+    private String id_ubigeo_nac;
+    private String id_ubigeo_act;
     private String nombres;
     private String apepat;
     private String apemat;
-    private Date fecha_nac;
+    private String fecha_nac;
+    private String reg_fecha_per;
     private String correo_gmail;
     private String correo_hotmail;
     private String correo_otros;
@@ -32,25 +29,26 @@ public class Persona {
     private String sexo;
     private String direccion;
     private String pagina_web;
+    private String foto_persona;
     private String estado;
+    private String id_tipo_doc;
     private String nro_doc;
-    private int id_tipo_doc;
-    private byte foto_persona;
+    private String responsable_apoderado;
 
     public Persona() {
     }
 
-    public Persona(int id_persona, int id_grado_instruccion, int id_ocupacion, int id_ubigeo_nac, int id_ubigeo_act, String nombre, String nombres, String apepat, String apemat, Date fecha_nac, String correo_gmail, String correo_hotmail, String correo_otros, String celular, String telefono, String sexo, String direccion, String pagina_web, String estado, String nro_doc, int id_tipo_doc, byte foto_persona) {
+    public Persona(String id_persona, String id_grado_instruccion, String id_ocupacion, String id_ubigeo_nac, String id_ubigeo_act, String nombres, String apepat, String apemat, String fecha_nac, String reg_fecha_per, String correo_gmail, String correo_hotmail, String correo_otros, String celular, String telefono, String sexo, String direccion, String pagina_web, String foto_persona, String estado, String id_tipo_doc, String nro_doc, String responsable_apoderado) {
         this.id_persona = id_persona;
         this.id_grado_instruccion = id_grado_instruccion;
         this.id_ocupacion = id_ocupacion;
         this.id_ubigeo_nac = id_ubigeo_nac;
         this.id_ubigeo_act = id_ubigeo_act;
-        this.nombre = nombre;
         this.nombres = nombres;
         this.apepat = apepat;
         this.apemat = apemat;
         this.fecha_nac = fecha_nac;
+        this.reg_fecha_per = reg_fecha_per;
         this.correo_gmail = correo_gmail;
         this.correo_hotmail = correo_hotmail;
         this.correo_otros = correo_otros;
@@ -59,66 +57,59 @@ public class Persona {
         this.sexo = sexo;
         this.direccion = direccion;
         this.pagina_web = pagina_web;
-        this.estado = estado;
-        this.nro_doc = nro_doc;
-        this.id_tipo_doc = id_tipo_doc;
         this.foto_persona = foto_persona;
-    }
-
-    public String getNro_doc() {
-        return nro_doc;
-    }
-
-    public void setNro_doc(String nro_doc) {
+        this.estado = estado;
+        this.id_tipo_doc = id_tipo_doc;
         this.nro_doc = nro_doc;
+        this.responsable_apoderado = responsable_apoderado;
     }
 
-    public int getId_persona() {
+    public String getReg_fecha_per() {
+        return reg_fecha_per;
+    }
+
+    public void setReg_fecha_per(String reg_fecha_per) {
+        this.reg_fecha_per = reg_fecha_per;
+    }
+
+    public String getId_persona() {
         return id_persona;
     }
 
-    public void setId_persona(int id_persona) {
+    public void setId_persona(String id_persona) {
         this.id_persona = id_persona;
     }
 
-    public int getId_grado_instruccion() {
+    public String getId_grado_instruccion() {
         return id_grado_instruccion;
     }
 
-    public void setId_grado_instruccion(int id_grado_instruccion) {
+    public void setId_grado_instruccion(String id_grado_instruccion) {
         this.id_grado_instruccion = id_grado_instruccion;
     }
 
-    public int getId_ocupacion() {
+    public String getId_ocupacion() {
         return id_ocupacion;
     }
 
-    public void setId_ocupacion(int id_ocupacion) {
+    public void setId_ocupacion(String id_ocupacion) {
         this.id_ocupacion = id_ocupacion;
     }
 
-    public int getId_ubigeo_nac() {
+    public String getId_ubigeo_nac() {
         return id_ubigeo_nac;
     }
 
-    public void setId_ubigeo_nac(int id_ubigeo_nac) {
+    public void setId_ubigeo_nac(String id_ubigeo_nac) {
         this.id_ubigeo_nac = id_ubigeo_nac;
     }
 
-    public int getId_ubigeo_act() {
+    public String getId_ubigeo_act() {
         return id_ubigeo_act;
     }
 
-    public void setId_ubigeo_act(int id_ubigeo_act) {
+    public void setId_ubigeo_act(String id_ubigeo_act) {
         this.id_ubigeo_act = id_ubigeo_act;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getNombres() {
@@ -145,11 +136,11 @@ public class Persona {
         this.apemat = apemat;
     }
 
-    public Date getFecha_nac() {
+    public String getFecha_nac() {
         return fecha_nac;
     }
 
-    public void setFecha_nac(Date fecha_nac) {
+    public void setFecha_nac(String fecha_nac) {
         this.fecha_nac = fecha_nac;
     }
 
@@ -217,6 +208,14 @@ public class Persona {
         this.pagina_web = pagina_web;
     }
 
+    public String getFoto_persona() {
+        return foto_persona;
+    }
+
+    public void setFoto_persona(String foto_persona) {
+        this.foto_persona = foto_persona;
+    }
+
     public String getEstado() {
         return estado;
     }
@@ -225,23 +224,29 @@ public class Persona {
         this.estado = estado;
     }
 
-    public int getId_tipo_doc() {
+    public String getId_tipo_doc() {
         return id_tipo_doc;
     }
 
-    public void setId_tipo_doc(int id_tipo_doc) {
+    public void setId_tipo_doc(String id_tipo_doc) {
         this.id_tipo_doc = id_tipo_doc;
     }
 
-    public byte getFoto_persona() {
-        return foto_persona;
+    public String getNro_doc() {
+        return nro_doc;
     }
 
-    public void setFoto_persona(byte foto_persona) {
-        this.foto_persona = foto_persona;
+    public void setNro_doc(String nro_doc) {
+        this.nro_doc = nro_doc;
     }
 
-    
-    
+    public String getResponsable_apoderado() {
+        return responsable_apoderado;
+    }
+
+    public void setResponsable_apoderado(String responsable_apoderado) {
+        this.responsable_apoderado = responsable_apoderado;
+    }
+
     
 }

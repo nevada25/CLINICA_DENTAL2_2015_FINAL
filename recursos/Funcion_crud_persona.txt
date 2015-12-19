@@ -1,0 +1,67 @@
+id_cliente
+
+pid_persona integer		
+pid_grado_instruccion integer			
+pid_ocupacion integer
+pid_ubigeo_nac integer	
+pid_ubigeo_act integer	
+pnombre character varying,			
+pnombres character varying,			
+papepat character varying,			
+papemat character varying,			
+pfecha_nac date,			
+pcorreo_gmail character varying,			
+pcorreo_hotmail character varying, 
+pcorreo_otros character varying,			
+pcelular character varying, 
+ptelefono character varying, 
+psexo character varying, 
+pdireccion character varying, 
+ppagina_web character varyingp, 
+foto_persona character varying, 
+pestado character varying, 
+pid_tipo_doc integer, 
+opcion integer		
+
+
+
+CREATE OR REPLACE FUNCTION fn_reg_persona(pid_persona integer		
+					  pid_grado_instruccion integer			
+					  pid_ocupacion integer
+					  pid_ubigeo_nac integer	
+					  pid_ubigeo_act integer	
+					  pnombre character varying,			
+					  pnombres character varying,			
+					  papepat character varying,			
+					  papemat character varying,			
+					  pfecha_nac date,			
+					  pcorreo_gmail character varying,			
+					  pcorreo_hotmail character varying, 
+					  pcorreo_otros character varying,			
+					  pcelular character varying, 
+					  ptelefono character varying, 
+					  psexo character varying, 
+					  pdireccion character varying, 
+					  ppagina_web character varyingp, 
+					  foto_persona character varying, 
+					  pestado character varying, 
+					  pid_tipo_doc integer, 
+					  opcion integer)
+  RETURNS integer AS
+$BODY$
+declare 
+  pid_inscripcion character varying;
+begin
+  if opcion=1 then
+   select to_char(now(),'ddmmyyyy')||'INS'||ltrim(lpad(to_char(coalesce(max(to_number(substring(id_inscripcion,12,4),'9999')),'0' )+1,'0000'),5,'0')) 
+    into pid_inscripcion from inscripcion where substring(id_inscripcion,1,8)=to_char(now(),'ddmmyyyy');
+
+    insert into inscripcion(id_inscripcion,id_persona,id_grupo,id_periodo, id_usuario, estado)
+	             values(pid_inscripcion,$1, $2,$3, $4, '1');
+  end if;
+ return 1;
+end;
+$BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION funcion_inscripcion(character varying, integer, integer, character varying, integer) OWNER TO postgres;

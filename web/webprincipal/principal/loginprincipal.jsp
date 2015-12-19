@@ -67,7 +67,7 @@
                             EmpleadoDao dao=new EmpleadoDaoImpl();
                         for(Empleado asd:dao.mostrarempleado()){
                         %>
-                        <option value="<%=asd.getId_empleado()%>"><%=asd.getNombres()%></option>
+                        <option value="<%=asd.getId_empleado()%>"></option>
                         <%}%>
                     </select>
                 </div>

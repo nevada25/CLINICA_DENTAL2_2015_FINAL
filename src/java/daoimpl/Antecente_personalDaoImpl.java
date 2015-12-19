@@ -49,7 +49,7 @@ public class Antecente_personalDaoImpl implements Antecente_personalDao{
         ResultSet rs = null;
         Antecente_personal antecente_personal = null;
         String query = " select id_ante_personal, nombre_antecedente from antecedente_personal "
-                + " where id_ante_personal between 9 and 16";
+                + " where id_ante_personal between 9 and 16 ";
         try {
             lista = new ArrayList<Antecente_personal>();
             st = cn.traerconeccion().createStatement();

@@ -15,12 +15,12 @@ public class Usuario{
     private String rol;
     private String email;
     private String ultima_session;
-    private byte foto;
+    private String foto;
 
     public Usuario() {
     }
 
-    public Usuario(int id_usuario, String nombre_usuario, String nombres, String password, String estado, String rol, String email, String ultima_session, byte foto) {
+    public Usuario(int id_usuario, String nombre_usuario, String nombres, String password, String estado, String rol, String email, String ultima_session, String foto) {
         this.id_usuario = id_usuario;
         this.nombre_usuario = nombre_usuario;
         this.nombres = nombres;
@@ -96,11 +96,11 @@ public class Usuario{
         this.ultima_session = ultima_session;
     }
 
-    public byte getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(byte foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 

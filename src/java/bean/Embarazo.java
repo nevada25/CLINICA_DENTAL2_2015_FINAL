@@ -15,23 +15,9 @@ public class Embarazo {
     private String nro_semanas;
     private String ultimo_control;
     private String trata_farma;
+    private String estado;
 
     public Embarazo() {
-    }
-
-    public Embarazo(String id_historia_clinica, String nro_semanas, String ultimo_control, String trata_farma) {
-        this.id_historia_clinica = id_historia_clinica;
-        this.nro_semanas = nro_semanas;
-        this.ultimo_control = ultimo_control;
-        this.trata_farma = trata_farma;
-    }
-
-    public String getTrata_farma() {
-        return trata_farma;
-    }
-
-    public void setTrata_farma(String trata_farma) {
-        this.trata_farma = trata_farma;
     }
 
     public String getId_historia_clinica() {
@@ -57,6 +43,21 @@ public class Embarazo {
     public void setUltimo_control(String ultimo_control) {
         this.ultimo_control = ultimo_control;
     }
-    
+
+    public String getTrata_farma() {
+        return trata_farma;
+    }
+
+    public void setTrata_farma(String trata_farma) {
+        this.trata_farma = trata_farma;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
 }

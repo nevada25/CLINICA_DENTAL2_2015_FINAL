@@ -36,9 +36,9 @@ Conexion2 cn=new Conexion2();
         Statement st=null;
         ResultSet rs=null;
         Empleado empleado=null;
-        String query="SELECT id_empleado,persona.nombres||' '|| persona.apepat||' '||persona.apemat as Persona " +
-                     " FROM persona,empleado " +
-                     " WHERE  persona.id_persona = empleado.id_empleado ";
+        String query="SELECT  em.id_empleado as empleado,pe.nombres||' '||pe.apepat||' '|| pe.apemat as persona " +
+                     "FROM   public.empleado em,  public.persona pe " +
+                     "WHERE   pe.id_persona = em.id_empleado;";
         try {
         lista=new ArrayList<>();
         st=cn.traerconeccion().createStatement();
@@ -46,8 +46,8 @@ Conexion2 cn=new Conexion2();
         while(rs.next())
         {
            empleado=new Empleado();
-           empleado.setId_empleado(rs.getString("id_empleado"));
-           empleado.setNombres(rs.getString("Persona"));
+           empleado.setId_empleado(rs.getString("empleado"));
+           empleado.setNombres(rs.getString("persona"));
            lista.add(empleado);
         }
         cn.cerrar();

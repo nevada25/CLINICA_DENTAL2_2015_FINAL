@@ -5,16 +5,12 @@
  */
 package dao;
 
-
-import java.util.List;
+import bean.Hist_hab_noc;
 
 /**
  *
  * @author Luis Lavado
  */
 public interface Hist_hab_nocDao {
-    public boolean  agregarHist_hab_nocDao(Hist_hab_nocDao hist_hab_nocDao);
-    public List<Hist_hab_nocDao> mostrarHist_hab_nocDao();
-    public boolean actualizarHist_hab_nocDao(Hist_hab_nocDao hist_hab_nocDao);
-    public boolean eliminarHist_hab_nocDao(int hist_hab_nocDao);
+    public int fn_hist_hab_noc(Hist_hab_noc hist_hab_noc, int opcion);
 }

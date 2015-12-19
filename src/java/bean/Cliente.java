@@ -9,15 +9,20 @@ package bean;
  *
  * @author Luis Lavado
  */
-public class Cliente {
+public class Cliente extends Persona{
 
     private String id_cliente;
+    private String responsable_apoderado;
 
     public Cliente() {
     }
 
-    public Cliente(String id_cliente) {
-        this.id_cliente = id_cliente;
+    public String getResponsable_apoderado() {
+        return responsable_apoderado;
+    }
+
+    public void setResponsable_apoderado(String responsable_apoderado) {
+        this.responsable_apoderado = responsable_apoderado;
     }
 
     public String getId_cliente() {
@@ -27,5 +32,5 @@ public class Cliente {
     public void setId_cliente(String id_cliente) {
         this.id_cliente = id_cliente;
     }
-
+    
 }

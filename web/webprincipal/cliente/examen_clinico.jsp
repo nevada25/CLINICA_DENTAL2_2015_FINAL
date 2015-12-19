@@ -1,4 +1,4 @@
-<%@include file="../principal/cabeza.jsp" %>
+<%@include file="../../inicio-top.jsp" %>
 <style>input.form-control{
                 color: white; 
                 background: #03a9f4;
@@ -75,4 +75,4 @@ option.form-control{
         <input type="text" class="form-control" value="" id="8" placeholder=""><br><br><br>
     </div>
     
-<%@include file="../principal/pie.jsp" %>
+<%@include file="../../inicio-botton.jsp" %>

@@ -101,5 +101,80 @@ public class ClienteDaoImpl implements ClienteDao{
 
         return estado;
     }
+
+    @Override
+    public List<Cliente> buscarclientes(String buscar, String limit) {
+        List<Cliente> lista = null;
+        Statement st=null;
+        ResultSet rs=null;
+        Cliente cliente=null;
+        String query="SELECT cl.id_cliente as id, upper(per.nombres||' '|| per.apepat||' '||per.apemat) Nombres, " +
+                     "  per.fecha_nac as fecha,CASE sexo WHEN 'M' THEN 'MASCULINO' WHEN 'F' THEN 'FEMENINO' END " +
+                     "  sexo,  upper(per.direccion)as dirección, per.nro_doc as dni,per.telefono as celular " +
+                     "FROM   public.persona per, public.cliente cl WHERE  per.id_persona = cl.id_cliente and " +
+                     "(per.nombres||per.apepat||per.apemat||per.nro_doc) like '%"+buscar+"%' limit "+limit+"";
+        try {
+        lista=new ArrayList<>();
+        st=cn.traerconeccion().createStatement();
+        rs=st.executeQuery(query);
+        while(rs.next())
+        {
+            cliente=new Cliente();
+            cliente.setId_cliente(rs.getString("id"));
+            cliente.setNombres(rs.getString("Nombres"));
+            cliente.setFecha_nac(rs.getString("fecha"));
+            cliente.setSexo(rs.getString("sexo"));
+            cliente.setDireccion(rs.getString("dirección"));
+            cliente.setNro_doc(rs.getString("dni"));
+            cliente.setTelefono(rs.getString("celular"));
+            lista.add(cliente);
+        }
+        cn.cerrar();
+        } catch (Exception e) {
+             System.out.println("ERROR:"+e.getMessage());
+            e.printStackTrace();
+            cn.cerrar();
+        }
+
+        return lista;
+    }
+
+    @Override
+    public List<Cliente> listarclientesfecha(String fecha_ini, String fecha_fin) {
+        List<Cliente> lista = null;
+        Statement st=null;
+        ResultSet rs=null;
+        Cliente cliente=null;
+        String query="SELECT   per.nombres||' '||per.apepat||' '||per.apemat as nombres,  per.fecha_nac as fecha_na,  per.telefono as telefono, CASE per.sexo WHEN 'M' THEN 'MASCULINO' WHEN 'F' THEN 'FEMENINO' END sexo,  per.direccion as direccion,   per.nro_doc as dni," +
+"  per.fecha_reg_per as re_per,  per.hora_registro hor_re,  hc.nro_historia as nro_his FROM   public.persona per,  public.historia_clinica hc, " +
+"  public.cliente cl WHERE    per.id_persona = cl.id_cliente AND  cl.id_cliente = hc.id_cliente and per.fecha_reg_per " +
+"  between  '"+fecha_ini+"' and '"+fecha_fin+"'";
+        try {
+        lista=new ArrayList<>();
+        st=cn.traerconeccion().createStatement();
+        rs=st.executeQuery(query);
+        while(rs.next())
+        {
+            cliente=new Cliente();
+            cliente.setNombres(rs.getString("nombres"));
+            cliente.setFecha_nac(rs.getString("fecha_na"));
+            cliente.setTelefono(rs.getString("telefono"));
+            cliente.setSexo(rs.getString("sexo"));
+            cliente.setDireccion(rs.getString("direccion"));
+            cliente.setNro_doc(rs.getString("dni"));
+            cliente.setFecha_nac(rs.getString("re_per"));
+            cliente.setEstado(rs.getString("hor_re"));
+            cliente.setCelular(rs.getString("nro_his"));
+            lista.add(cliente);
+        }
+        cn.cerrar();
+        } catch (Exception e) {
+             System.out.println("ERROR:"+e.getMessage());
+            e.printStackTrace();
+            cn.cerrar();
+        }
+
+        return lista;
+    }
     
 }

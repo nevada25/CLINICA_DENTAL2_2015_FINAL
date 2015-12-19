@@ -8,241 +8,142 @@ import java.util.ArrayList;
 import java.util.List;
 public class personadaoimpl implements personadao {
     Conexion2 cn=new Conexion2();
+   
     @Override
-    public boolean agregarpersona(Persona person, int opcion) {
-        boolean estado = false;
-        Statement st=null;
-        String query="select fn_add_personal("+person.getId_grado_instruccion()+" ,"+person.getId_ocupacion()+","+person.getId_ubigeo_nac()+","+person.getId_ubigeo_act()+",'"+person.getNombres()+"'," +
-" '"+person.getApepat()+"','"+person.getApemat()+"','"+person.getFecha_nac()+"','"+person.getCorreo_gmail()+"','"+person.getCorreo_hotmail()+"','"+person.getCorreo_otros()+"','"+person.getCelular()+"','"+person.getTelefono()+"','"+person.getSexo()+"'," +
-"'"+person.getDireccion()+"','"+person.getPagina_web()+"','"+person.getFoto_persona()+"',1,"+person.getId_tipo_doc()+","+opcion+")";
+    public boolean fn_registrar_Persona(Persona persona, int opcion) {
+        boolean flat = false;
+        Statement st = null;
+        ResultSet rs = null;
+        String COMANDO = " SELECT fn_add_persona(" + persona.getId_grado_instruccion()
+                + ", " + persona.getId_ocupacion()
+                + ", " + persona.getId_ubigeo_nac()
+                + ", " + persona.getId_ubigeo_act()
+                + ", '" + persona.getNombres()
+                + "', '" + persona.getApepat()
+                + "', '" + persona.getApemat()
+                + "', '" + persona.getFecha_nac()
+                + "', '" + persona.getCorreo_gmail()
+                + "', '" + persona.getCorreo_hotmail()
+                + "', '" + persona.getCorreo_otros()
+                + "', '" + persona.getCelular()
+                + "', '" + persona.getTelefono()
+                + "', '" + persona.getSexo()
+                + "', '" + persona.getDireccion()
+                + "', '" + persona.getPagina_web()
+                + "', '" + persona.getFoto_persona()
+                + "', '" + persona.getEstado()
+                + "', " + persona.getId_tipo_doc()
+                + ", '" + persona.getNro_doc()
+                + "', " + opcion + ") resultado";
+        System.out.println("comando: " + COMANDO);
         try {
-            st=cn.traerconeccion().createStatement();
-            st.executeUpdate(query);
-            cn.traerconeccion().getAutoCommit();
+            st = cn.traerconeccion().createStatement();
+            rs = st.executeQuery(COMANDO);
             cn.guardar();
+            rs.next();
+            System.out.println(rs.getString("resultado"));
             cn.cerrar();
-            estado = true;
+            flat = true;
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
-            cn.restablecer();
+            System.out.println("ERROR:" + e.getMessage());
+            e.printStackTrace();
             cn.cerrar();
-            estado = false;
+            flat = false;
         }
-
-        return estado;
+        return flat;
     }
 
     @Override
-    public List<Persona> mostrarpersona() {
+    public List<Persona> listarPersona() {
         List<Persona> lista = null;
-        Statement st=null;
-        ResultSet rs=null;
-        Persona persona=null;
-        String query="SELECT * FROM persona";
-        try {
-        lista=new ArrayList<>();
-        st=cn.traerconeccion().createStatement();
-        rs=st.executeQuery(query);
-        while(rs.next())
-        {
-            persona=new Persona();
-            persona.setId_persona(rs.getInt("id_persona"));
-            persona.setId_grado_instruccion(rs.getInt("id_grado_instruccion"));
-            persona.setId_ocupacion(rs.getInt("id_ocupacion"));
-            persona.setId_ubigeo_nac(rs.getInt("id_ubigeo_nac"));
-            persona.setId_ubigeo_act(rs.getInt("id_ubigeo_act"));
-            persona.setNombre(rs.getString("nombre"));
-            persona.setNombres(rs.getString("nombres"));
-            persona.setApepat(rs.getString("apepat"));
-            persona.setApemat(rs.getString("apemat"));
-            persona.setFecha_nac(rs.getDate("fecha_nac"));
-            persona.setCorreo_gmail(rs.getString("correo"));
-            persona.setCorreo_hotmail(rs.getString("correo"));
-            persona.setCorreo_otros(rs.getString("correo"));
-            persona.setCelular(rs.getString("celular"));
-            persona.setTelefono(rs.getString("telefono"));
-            persona.setSexo(rs.getString("sexo"));
-            persona.setDireccion(rs.getString("direccion"));
-            persona.setPagina_web(rs.getString("pagina_web"));
-            persona.setEstado(rs.getString("estado"));
-            persona.setId_tipo_doc(rs.getInt("id_tipo_doc"));
-            persona.setFoto_persona(rs.getByte("foto_persona"));
-            persona.setNro_doc(rs.getString("nro_doc"));
-            lista.add(persona);
-        }
-        cn.cerrar();
-        } catch (Exception e) {
-             System.out.println("ERROR:"+e.getMessage());
-            e.printStackTrace();
-            cn.cerrar();
-        }
-
-        return lista;
-    }
-
-    @Override
-    public boolean actualizarpersona(Persona persona) {
-        boolean estado = false;
-        Statement st=null;
-        String query="UPDATE persona SET id_grado_instruccion= , id_ocupacion= , id_ubigeo_nac=  ,id_ubigeo_act= , nombre=' ', nombres='', apepat='', apemat='', fecha_nac='', \n" +
-"       correo_gmail='', correo_hotmail='', correo_otros='', celular='', telefono='', sexo='', direccion='', pagina_web='', estado='', id_tipo_doc= , \n" +
-"       foto_persona=\n" +
-" WHERE id_persona=";
-        try {
-            st=cn.traerconeccion().createStatement();
-            st.executeUpdate(query);
-            cn.guardar();
-            cn.cerrar();
-        } catch (Exception e) {
-             System.out.println("ERROR:"+e.getMessage());
-            e.printStackTrace();
-            cn.cerrar();
-        }
-        return estado;
-    }
-
-    @Override
-    public boolean eliminarpersona(int id) {
-        boolean estado = false;
-        Statement st=null;
-        String query="DELETE FROM persona WHERE id_persona="+id+"";
-        try {
-            st=cn.traerconeccion().createStatement();
-            st.executeUpdate(query);
-            cn.guardar();
-            cn.cerrar();
-            estado=true;
-        } catch (Exception e) {
-            System.out.println("ERROR:"+e.getMessage());
-            cn.cerrar();
-        }
-
-        return estado;
-    }
-
-    @Override
-    public List<Persona> mostrarpersona(String buscar,String limit) {
-       List<Persona> lista = null;
-        Statement st=null;
-        ResultSet rs=null;
-        Persona persona=null;
-        String query="SELECT id_persona, id_grado_instruccion, id_ocupacion, id_ubigeo_nac,id_ubigeo_act, nombres, apepat, apemat, fecha_nac, correo_gmail," +
-"       correo_hotmail, correo_otros, celular, telefono, sexo, direccion,pagina_web, foto_persona, estado, id_tipo_doc, nro_doc," +
-"       fecha_registro_per,hora_registro FROM persona where upper(nombres||apepat||apemat) like upper('%"+buscar+"%') order by apepat limit"+limit;
-        try {
-        lista=new ArrayList<>();
-        st=cn.traerconeccion().createStatement();
-        rs=st.executeQuery(query);
-        while(rs.next())
-        {
-              persona=new Persona();
-            persona.setId_persona(rs.getInt("id_persona"));
-            persona.setId_grado_instruccion(rs.getInt("id_grado_instruccion"));
-            persona.setId_ocupacion(rs.getInt("id_ocupacion"));
-            persona.setId_ubigeo_nac(rs.getInt("id_ubigeo_nac"));
-            persona.setId_ubigeo_act(rs.getInt("id_ubigeo_act"));
-            persona.setNombre(rs.getString("nombre"));
-            persona.setNombres(rs.getString("nombres"));
-            persona.setApepat(rs.getString("apepat"));
-            persona.setApemat(rs.getString("apemat"));
-            persona.setFecha_nac(rs.getDate("fecha_nac"));
-            persona.setCorreo_gmail(rs.getString("correo"));
-            persona.setCorreo_hotmail(rs.getString("correo"));
-            persona.setCorreo_otros(rs.getString("correo"));
-            persona.setCelular(rs.getString("celular"));
-            persona.setTelefono(rs.getString("telefono"));
-            persona.setSexo(rs.getString("sexo"));
-            persona.setDireccion(rs.getString("direccion"));
-            persona.setPagina_web(rs.getString("pagina_web"));
-            persona.setEstado(rs.getString("estado"));
-            persona.setId_tipo_doc(rs.getInt("id_tipo_doc"));
-            persona.setFoto_persona(rs.getByte("foto_persona"));
-            persona.setNro_doc(rs.getString("nro_doc"));
-            lista.add(persona);
-        }
-        cn.cerrar();
-        } catch (Exception e) {
-             System.out.println("ERROR:"+e.getMessage());
-            e.printStackTrace();
-           cn.cerrar();
-        }
-
-        return lista;
-    }
-
-    @Override
-    public Persona datoper(int id) {
-
         Statement st = null;
         ResultSet rs = null;
         Persona persona = null;
-        String query = "SELECT * FROM persona where id_persona="+id+"";
-        System.out.println(query);
+        String query = "select * from persona";
         try {
-        
-        st=cn.traerconeccion().createStatement();
-        rs=st.executeQuery(query);
-        while(rs.next())
-        {
-            persona=new Persona();
-            persona.setId_persona(rs.getInt("id_persona"));
-            persona.setId_grado_instruccion(rs.getInt("id_grado_instruccion"));
-            persona.setId_ocupacion(rs.getInt("id_ocupacion"));
-            persona.setId_ubigeo_nac(rs.getInt("id_ubigeo_nac"));
-            persona.setId_ubigeo_act(rs.getInt("id_ubigeo_act"));
-            persona.setNombre(rs.getString("nombre"));
-            persona.setNombres(rs.getString("nombres"));
-            persona.setApepat(rs.getString("apepat"));
-            persona.setApemat(rs.getString("apemat"));
-            persona.setFecha_nac(rs.getDate("fecha_nac"));
-            persona.setCorreo_gmail(rs.getString("correo"));
-            persona.setCorreo_hotmail(rs.getString("correo"));
-            persona.setCorreo_otros(rs.getString("correo"));
-            persona.setCelular(rs.getString("celular"));
-            persona.setTelefono(rs.getString("telefono"));
-            persona.setSexo(rs.getString("sexo"));
-            persona.setDireccion(rs.getString("direccion"));
-            persona.setPagina_web(rs.getString("pagina_web"));
-            persona.setEstado(rs.getString("estado"));
-            persona.setId_tipo_doc(rs.getInt("id_tipo_doc"));
-            persona.setFoto_persona(rs.getByte("foto_persona"));
-            persona.setNro_doc(rs.getString("nro_doc"));
-            
-        }
-        cn.cerrar();
+            lista = new ArrayList<Persona>();
+            st = cn.traerconeccion().createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+
+                persona = new Persona();
+                persona.setId_persona(rs.getString("id_persona"));
+                persona.setNombres(rs.getString("nombres"));
+                persona.setApepat(rs.getString("apepat"));
+                persona.setApemat(rs.getString("apemat"));
+                persona.setId_tipo_doc(rs.getString("id_tipo_doc"));
+                persona.setNro_doc(rs.getString("nro_doc"));
+                persona.setSexo(rs.getString("sexo"));
+                persona.setFecha_nac(rs.getString("fecha_nac"));
+                persona.setCelular(rs.getString("celular"));
+                persona.setTelefono(rs.getString("telefono"));
+                persona.setDireccion(rs.getString("direccion"));
+                persona.setCorreo_gmail(rs.getString("correo_gmail"));
+                persona.setCorreo_hotmail(rs.getString("correo_hotmail"));
+                persona.setCorreo_otros(rs.getString("correo_otros"));
+                persona.setId_ubigeo_nac(rs.getString("id_ubigeo_nac"));
+                persona.setId_ubigeo_act(rs.getString("id_ubigeo_act"));
+                persona.setId_grado_instruccion(rs.getString("id_grado_instruccion"));
+                persona.setId_ocupacion(rs.getString("id_ocupacion"));
+                persona.setPagina_web(rs.getString("pagina_web"));
+                persona.setFoto_persona(rs.getString("foto_persona"));
+                persona.setEstado(rs.getString("estado"));
+                lista.add(persona);
+            }
+            cn.cerrar();
         } catch (Exception e) {
             System.out.println("ERROR:" + e.getMessage());
             e.printStackTrace();
             cn.cerrar();
         }
-        return persona;
+        return lista;
     }
 
     @Override
-    public List<Persona> mostrarpersonas(int id) {
-        List<Persona> lista=null;
-        Statement st=null;
-        ResultSet rs=null;
-        Persona alumo=null;
-        String query="SELECT * from persona where id_persona="+id+"";
+    public int fn_registrar_Persona2(Persona persona, int opcion) {
+        boolean flat = false;
+        Statement st = null;
+        ResultSet rs = null;
+        int id_persona=0;
+        String COMANDO = " SELECT fn_add_persona(" + persona.getId_grado_instruccion()
+                + ", " + persona.getId_ocupacion()
+                + ", " + persona.getId_ubigeo_nac()
+                + ", " + persona.getId_ubigeo_act()
+                + ", '" + persona.getNombres()
+                + "', '" + persona.getApepat()
+                + "', '" + persona.getApemat()
+                + "', '" + persona.getFecha_nac()
+                + "', '" + persona.getCorreo_gmail()
+                + "', '" + persona.getCorreo_hotmail()
+                + "', '" + persona.getCorreo_otros()
+                + "', '" + persona.getCelular()
+                + "', '" + persona.getTelefono()
+                + "', '" + persona.getSexo()
+                + "', '" + persona.getDireccion()
+                + "', '" + persona.getPagina_web()
+                + "', '" + persona.getFoto_persona()
+                + "', '" + persona.getEstado()
+                + "', " + persona.getId_tipo_doc()
+                + ", '" + persona.getNro_doc()
+                + "', '" + persona.getResponsable_apoderado()
+                + "', " + opcion + ") resultado";
+        System.out.println("comando: " + COMANDO);
         try {
-            lista = new ArrayList<>();
-            st= cn.traerconeccion().createStatement();
-            rs=st.executeQuery(query);
-            while (rs.next()) {
-                
-                alumo =new Persona();
-                alumo.setId_persona(rs.getInt("id_persona"));
-                alumo.setNombre(rs.getString("nombre"));
-                alumo.setApepat(rs.getString("apepat"));
-                lista.add(alumo);
-            }
+            st = cn.traerconeccion().createStatement();
+            rs = st.executeQuery(COMANDO);
+            cn.guardar();
+            rs.next();
+            System.out.println(rs.getString("resultado"));
+             id_persona=rs.getInt("resultado");
+            cn.cerrar();
+            flat = true;
         } catch (Exception e) {
-            System.out.println("ERROR:"+e.getMessage());
+            System.out.println("ERROR:" + e.getMessage());
             e.printStackTrace();
             cn.cerrar();
+            flat = false;
         }
-        return lista;
-}
+        return id_persona;        
+    }
 
 }

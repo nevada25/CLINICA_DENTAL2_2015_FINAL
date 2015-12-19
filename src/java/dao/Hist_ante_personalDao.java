@@ -5,17 +5,12 @@
  */
 package dao;
 
-
 import bean.Hist_ante_personal;
-import java.util.List;
 
 /**
  *
  * @author Luis Lavado
  */
 public interface Hist_ante_personalDao {
-    public boolean  agregarHist_ante_personal(Hist_ante_personal  hist_ante_personal);
-    public List<Hist_ante_personal> listarHist_ante_personal();
-    public boolean actualizarHist_ante_personalDao(Hist_ante_personal hist_ante_personal);
-    public boolean eliminarHist_ante_personalDao(int id_diagnosticoPre);
+    public int fn_hist_ante_personal(Hist_ante_personal hist_ante_personal, int opcion);
 }

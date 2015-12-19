@@ -17,10 +17,10 @@ public class Categoria_servicio {
     public Categoria_servicio() {
     }
 
-    public Categoria_servicio(String id_cat_serv, String nombre_cat_serv) {
+    /*public Categoria_servicio(String id_cat_serv, String nombre_cat_serv) {
         this.id_cat_serv = id_cat_serv;
         this.nombre_cat_serv = nombre_cat_serv;
-    }
+    }*/
     
 
     public String getId_cat_serv() {

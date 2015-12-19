@@ -6,15 +6,21 @@
 package Centro_Control;
 
 import bean.Categoria_servicio;
+import bean.Cliente;
 import bean.Empleado;
+import bean.Historia_clinica;
 import bean.Producto;
 import bean.Usuario;
 import dao.Categoria_servicioDao;
+import dao.ClienteDao;
 import dao.EmpleadoDao;
+import dao.Historia_clinicaDao;
 import dao.ProductoDao;
 import dao.UsuarioDao;
 import daoimpl.Categoria_servicioDaoImpl;
+import daoimpl.ClienteDaoImpl;
 import daoimpl.EmpleadoDaoImpl;
+import daoimpl.Historia_clinicaDaoImpl;
 import daoimpl.ProductoDaoImpl;
 import daoimpl.UsuarioDaoImpl;
 
@@ -31,7 +37,10 @@ public class prueba {
 //p.actualizarr();
 //p.elimianr();
 //p.agregarusua();
-p.mostrarproducto();
+//p.mostrarproducto();
+//p.buscarcliente();
+//p.buscarhistoria();
+p.clienteentrefechas();
 //p.empleador();
         
     }
@@ -108,21 +117,74 @@ p.mostrarproducto();
     public void empleador(){
         EmpleadoDao da=new EmpleadoDaoImpl();
         
-        for (Empleado asd : da.mostrarempleado()) {
-            System.out.println("id: "+asd.getId_empleado()+
-                                "NOMBRES: "+asd.getNombres());
-        }
+//        for (Empleado asd : da.mostrarempleado()) {
+//            System.out.println("id: "+asd.getId_empleado()+
+//                                "NOMBRES: "+asd.getN());
+//        }
     
     }
     public void mostrarproducto(){
         ProductoDao dao=new ProductoDaoImpl();
         
-        for (Producto asd:dao.mostrarproductosaedidar(""," 1")) {
-            System.out.println("id_producto:"+asd.getId_producto()+"nombre_producto: "+asd.getNombre_producto()
-            +"UNIDAD DE MEDIDA: "+asd.getId_unidad_medida()
+        for (Producto asd:dao.mostrarproductosaedidar("","5")) {
+            System.out.println("\nid_producto:"+asd.getId_producto()+"\nnombre_producto: "+asd.getNombre_producto()
+            +"\nUNIDAD DE MEDIDA: "+asd.getId_unidad_medida()
             ); 
         }
     }
+    public void buscarcliente(){
+        ClienteDao cliente=new ClienteDaoImpl();
+        for (Cliente sad : cliente.buscarclientes("m"," 5")) {
+            System.out.println("\n################################");
+            System.out.println("\nNOMBRE: "+sad.getNombres()+ 
+                                "\nFECHA DE NACIMIENTO: "+sad.getFecha_nac()+
+                                "\nSEXO:" +sad.getSexo()+
+                                "\nDNI: "+sad.getNro_doc()+
+                                "\nCELULAR: "+sad.getTelefono());
+            System.out.println("\n################################");
+        }
     
     }
+    
+    public void buscarhistoria(){
+        Historia_clinicaDao dao=new Historia_clinicaDaoImpl();
+        //Historia_clinica historia_clinica=new Historia_clinica();
+        //historia_clinica.setId_cliente("55");
+        for(Historia_clinica historia_clinica: dao.listarHistCla(55)){
+            System.out.println("\nid: "+historia_clinica.getId_cliente()+""+"\nhistoria clinica:"+historia_clinica.getId_historia_clinica()+""
+                              + "\nNombre: "+historia_clinica.getNombres()+""
+                    + "          \nnro_c: "+historia_clinica.getNro_historia()+""
+                    + "          \nEDAD:"+historia_clinica.getApepat()+""
+                    + "          \nsexo: "+historia_clinica.getSexo()+""
+                    + "           \nDIRECCION: "+historia_clinica.getDireccion()+""
+                    + "          \nDni:"+historia_clinica.getNro_doc()+""
+                    + "          \ntelefono: "+historia_clinica.getTelefono()
+                    + "          \nfecha_registro:"+historia_clinica.getFecha_reg(
+                    )+"           \nNOmbre apoderado:"+historia_clinica.getPagina_web()+""
+             +"           \nMotivo de consulta:"+historia_clinica.getPagina_web()+""
+                     +"           \nfecha nacimiento:"+historia_clinica.getFecha_nac()+""
+                    + "    \nComentario: "+historia_clinica.getComentario()+""
+                    + "    \nAntecedente Familiar: "+historia_clinica.getAntecedentes_familiar()+""
+                    + "\nPeso: "+historia_clinica.getPeso()+"\ntalla:"+historia_clinica.getTalla()+"\nPa:"+historia_clinica.getPa());
+        
+        }
+        
+    
+        }
+    public void clienteentrefechas(){
+    ClienteDao cliente=new ClienteDaoImpl();
+    for(Cliente client:cliente.listarclientesfecha("01-12-2015","02-12-2015")){
+        System.out.println("Nombres: "+client.getNombres());
+    
+    }
+    
+    }
+    
+    }
+            
+        
+    
+    
+    
+   
 

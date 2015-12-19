@@ -13,8 +13,7 @@ public class Producto {
 
     private String id_producto;
     private String id_unidad_medida;
-    private String nombre_producto; 
-
+            private String nombre_producto;
     public Producto() {
     }
 
@@ -47,6 +46,5 @@ public class Producto {
     public void setId_unidad_medida(String id_unidad_medida) {
         this.id_unidad_medida = id_unidad_medida;
     }
-   
     
 }
